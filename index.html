@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <title>Weather App</title>
+
+    <style>
+        .card-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+        #weatherCard {
+            display: none;
+            box-shadow: 5px 5px 5px rgba(121, 121, 121, 0.459);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.766);
+        }
+        #message{
+            display: none;
+        }
+
+    </style>
+</head>
+<body class="bg-gray-800">   
+
+    <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative">
+        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl text-white">Weather App</h1>
+        
+        <form class="w-full max-w-md mx-auto mt-10" id="weatherForm">
+            <div class="relative">
+                <input type="text" id="cityInput" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Enter city name..." />
+                <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Get Weather</button>
+            </div>
+        </form>
+        <center>
+            <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded" id="message"></span>
+        </center>
+    </div>
+
+    
+    <div class="card-container">
+        <div id="weatherCard" class="flex items-center w-full max-w-sm font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border border-gray-300">
+            <div class="px-5 pb-5">
+                <a href="#">
+                    <h5 class="text-xl font-semibold tracking-tight text-center" id="cityName"></h5>
+                </a>
+                <div class="flex justify-center items-center mt-2.5 mb-5 text-center">
+                    <span class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 shadow-lg shadow-teal-500/50 dark:shadow-lg dark:shadow-teal-800/80 font-medium rounded-lg text-sm px-2.5 py-0.5 text-center" id="description"></span>
+                </div>
+                <div class="flex justify-center items-center text-center mb-2">
+                    <img src="" id="icon_img" alt="Weather" />
+                    <span class="text-3xl font-bold ml-2" id="temperature"></span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <a href="#" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center me-2 mb-2 " id="feelsLike"></a>
+                    <a href="#" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center me-2 mb-2 " id="humidity"></a>
+                    <a href="#" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-2.5 py-2.5 text-center me-2 mb-2 " id="pressure"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
