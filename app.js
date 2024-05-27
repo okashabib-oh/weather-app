@@ -25,7 +25,7 @@ const formHandler = async (e) => {
         const response = await axios(
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
         )
-        
+
         message.style.display = "none"
         form.reset()
         weatherCard.style.display = 'block'
@@ -38,7 +38,7 @@ const formHandler = async (e) => {
         const humi = response.data.main.humidity
         const feels = response.data.main.feels_like
         const pre = response.data.main.pressure
-        temp.innerText = temperature+"°C";
+        temp.innerText = `${temperature}°C`;
         desc.innerText = description
         image_icon.src = icon_path
         nameCity.innerHTML = `Weather of ${cityName}`
