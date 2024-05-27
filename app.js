@@ -25,7 +25,7 @@ const formHandler = async (e) => {
         const response = await axios(
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
         )
-        console.log(response);
+        
         message.style.display = "none"
         form.reset()
         weatherCard.style.display = 'block'
