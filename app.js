@@ -41,7 +41,7 @@ const formHandler = async (e) => {
         temp.innerText = temperature+"°C";
         desc.innerText = description
         image_icon.src = icon_path
-        nameCity.innerText = `Weather of ${cityName}`
+        nameCity.innerHTML = `Weather of ${cityName}`
         humidity.innerHTML = ` Humidity <br> ${humi}%`
         feelsLike.innerHTML = ` Feels Like <br> ${feels}°C`
         pressure.innerHTML = ` Pressure <br> ${pre} mb`
