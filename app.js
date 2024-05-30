@@ -10,24 +10,39 @@ const weatherCard = document.getElementById('weatherCard');
 const message = document.getElementById('message')
 const feelsLike = document.getElementById('feelsLike')
 const pressure = document.getElementById('pressure')
+const loader = document.getElementById('loader')
+const btn = document.getElementById('getWeather')
 
 const formHandler = async (e) => {
     try{
         e.preventDefault()
-        message.classList = "bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-1 rounded"
-        message.innerText = "Loading..."
-        message.style.width = "20%"
-        message.style.marginTop = "10px"
-        message.style.display = "block"
+        loader.style.display = "block"
         weatherCard.style.display = 'none'
+        btn.disabled = true
 
         const city = cityInput.value;
         const response = await axios(
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
         )
+        console.log(response);
 
-        message.style.display = "none"
         form.reset()
+        
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+          Toast.fire({
+            icon: "success",
+            title: "City found successfully"
+          });
         weatherCard.style.display = 'block'
 
         const cityName = response.data.name
@@ -48,10 +63,15 @@ const formHandler = async (e) => {
 
     }catch(error){
         weatherCard.style.display = 'none'
-        message.style.display = "block"
-        message.style.width = "20%"
-        message.classList = "bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-1 rounded"
-        message.innerText = error?.response?.data?.message || "unknown error"
+    
+        Swal.fire({
+            title: "Error",
+            text: `${error?.response?.data?.message || "Unknown ERROR"}`,
+            icon: "error"
+        });
+    }finally{
+        loader.style.display = "none"
+        btn.disabled = false
     }
 }
 
